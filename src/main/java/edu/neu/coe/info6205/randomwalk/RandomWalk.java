@@ -5,6 +5,7 @@
 package edu.neu.coe.info6205.randomwalk;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class RandomWalk {
 
@@ -20,8 +21,8 @@ public class RandomWalk {
      * @param dy the distance he moves in the y direction
      */
     private void move(int dx, int dy) {
-        // TO BE IMPLEMENTED ...
-        // ... END IMPLEMENTATION
+        this.x = this.x + dx;
+        this.y = this.y + dy;
     }
 
     /**
@@ -30,8 +31,9 @@ public class RandomWalk {
      * @param m the number of steps the drunkard takes
      */
     private void randomWalk(int m) {
-        // TO BE IMPLEMENTED ...
-        // ... END IMPLEMENTATION
+        IntStream.range(0, m).forEachOrdered(n -> {
+            randomMove();
+        });
     }
 
     /**
@@ -50,9 +52,7 @@ public class RandomWalk {
      * @return the (Euclidean) distance from the origin to the current position.
      */
     public double distance() {
-        // TO BE IMPLEMENTED ...
-        return 0;
-        // ... END IMPLEMENTATION
+        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
     }
 
     /**
@@ -73,13 +73,11 @@ public class RandomWalk {
     }
 
     public static void main(String[] args) {
-        if (args.length == 0)
-            throw new RuntimeException("Syntax: RandomWalk steps [experiments]");
-        int m = Integer.parseInt(args[0]);
-        int n = 30;
-        if (args.length > 1) n = Integer.parseInt(args[1]);
-        double meanDistance = randomWalkMulti(m, n);
-        System.out.println(m + " steps: " + meanDistance + " over " + n + " experiments");
+        IntStream.range(1, 100).forEachOrdered(steps -> {
+            double meanDistance = randomWalkMulti(steps, 10000);
+            // print results in CSV compatible format
+            System.out.println(String.valueOf(steps) + "," + String.valueOf(meanDistance));
+        });
     }
 
 }
