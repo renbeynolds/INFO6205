@@ -4,13 +4,13 @@
 
 package edu.neu.coe.info6205.sort.simple;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 @SuppressWarnings("ALL")
 public class InsertionSortTest {
@@ -34,6 +34,7 @@ public class InsertionSortTest {
     public void sortQuiz6() throws Exception {
         assertEquals("epTy",testWord("Type"));
         assertEquals("aABb",testWord("BabA"));
+        assertEquals("abcdefghijklmnop", testWord("mkclijdgoheanbpf"));
 //        assertEquals("Be?y",testWord("By?e")); answer is By?e
     }
 

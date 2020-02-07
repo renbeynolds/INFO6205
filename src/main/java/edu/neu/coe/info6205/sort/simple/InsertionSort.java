@@ -21,6 +21,9 @@ public class InsertionSort<X extends Comparable<X>> implements Sort<X> {
             // Invariant 1: elements xs[from..i] are in order
             // TO BE IMPLEMENTED ...
             // ... END IMPLEMENTATION
+            for(int j = i; j > from && helper.less(xs[j], xs[j-1]); j--) {
+                helper.swap(xs, from, to, j);
+            }
         }
     }
 

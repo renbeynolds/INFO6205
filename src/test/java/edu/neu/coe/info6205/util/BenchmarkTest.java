@@ -4,15 +4,19 @@
 
 package edu.neu.coe.info6205.util;
 
-import edu.neu.coe.info6205.sort.simple.*;
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Random;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import edu.neu.coe.info6205.sort.simple.InsertionSort;
+import edu.neu.coe.info6205.sort.simple.QuickSort;
+import edu.neu.coe.info6205.sort.simple.QuickSort_3way;
+import edu.neu.coe.info6205.sort.simple.SelectionSort;
+import edu.neu.coe.info6205.sort.simple.Sort;
 
 @SuppressWarnings("ALL")
 public class BenchmarkTest {
@@ -59,7 +63,7 @@ public class BenchmarkTest {
     public void testBenchmarkWithQuickSort() throws Exception {
         Random random = new Random();
         int m = 100; // This is the number of repetitions: sufficient to give a good mean value of timing
-        int n = 1000; // This is the size of the array to be sorted.
+        int n = 500000; // This is the size of the array to be sorted.
         Integer[] array = new Integer[n];
         for (int i = 0; i < n; i++) array[i] = random.nextInt();
         double tqs3 = benchmarkSort(array, "QuickSort3way", new QuickSort_3way<>(), m);
